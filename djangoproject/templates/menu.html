@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Меню</title>
+    <link type = "text/css" rel="stylesheet" href="{% static 'menu/css/styles.css' %}">
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'js/scripts.js' %}"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="head-container">
+            <div class="header_brand">
+                <a class="menu_page_link" href="{% url 'menu_page' %}">MENU</a>
+            </div>
+            <div class="header_order_total">
+                <a class="header_order_total_link" href="{% url 'order:order_page' %}">
+                <span class="total_cost" id="total-cost">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+    <div class="mainbody">
+        <div class="maincat">
+            <div class="cat_container">
+                {% for el in category_list%}
+                    <a class="cat" href="#{{el.id}}">
+                        {{el.name}}
+                    </a>
+                {%endfor%}
+            </div>
+        </div>
+        <div class="userInfoBlock">
+            <div class="GuestsQuantity">
+                <h4>Введите количество гостей</h4>
+                <input id="guestsQuantityInput" type="number" min="0" inputmode="numeric" value="{{user_info.guests_quantity}}">
+                <button class="guestsQuantityBtn" type="submit">OK</button>
+                <button class="updByGQuantity" type="submit"></button>
+            </div>
+            <div>
+                <h4>Введите ваше имя</h4>
+                <input id="userNameInp" type="text" value="{{user_info.user_name}}">
+                <button class="userNameBtn">OK</button>
+            </div>
+            <div>
+                <h4>Введите дату мероприятия</h4>
+                <input id="dateOfEvent" type="date" value="{{user_info.date_of_event}}" >
+                <button class="dateOfEventBtn">OK</button>
+            </div>
+        </div>
+        <div class="main">
+            <div class="container">
+                {% for el in pos_by_cat %}
+                <div>
+                    <a class="anchor" id={{el.id}}></a>
+                    <h1 class="cat_title">{{el.name}}</h1>
+                        <div class="cat_block">
+                            {% for position in el.positions.all %}
+                            <div class="pos_block">
+                                <div class="pos_block1">
+                                     <div class="title_and_desc">
+                                        <h3 class="pos_title">{{position.title}}</h3>
+                                        <p class="pos_desc">{{position.description}}</p>
+                                     </div>
+                                    <div class="price_block">
+                                        <div class="price">{{position.price}} ₽ /{{position.portion}}</div>
+                                         <div class="manage_quantity">
+                                            <form class="remove-from-order" id="remove-from-order-{{position.id}}" data-position-id="{{ position.id }}">
+                                                <button class="btn-remove-from-order" type="submit">-</button>
+                                            </form>
+                                            <div class="position-quantity"  id="position-quantity-{{ position.id }}">
+                                                <input class="quantityInput" type="number" inputmode="numeric" id="quantityInp-{{position.id}}">
+                                            </div>
+                                             <div>
+                                                <button class="update_quantity" data-position-id="{{position.id}}" id="confirmButton-{{position.id}}"
+                                                        style="display: none; position:relative;">OK</button>
+                                                <button class="set_quantity" data-position-id="{{position.id}}" id="set_quantity_btn-{{position.id}}"
+                                                        style="display: none; position:relative;"></button>
+                                            </div>
+                                            <form class="add-to-order" data-position-id="{{ position.id }}">
+                                                <button class="btn-add-to-order" type="submit">+</button>
+                                            </form>
+                                         </div>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {%endfor%}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

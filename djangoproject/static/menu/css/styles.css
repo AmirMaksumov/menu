@@ -1,0 +1,319 @@
+ body {
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+  height: auto;
+  margin: 0;
+}
+
+.block {
+  margin: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pos_block {
+    width: 45%;
+    font-size: 16px;
+    padding: 0 20px;
+
+}
+.pos_block_order {
+    width: 90%;
+    font-size: 16px;
+    padding: 0 20px;
+    display: flex;
+    position: relative;
+    width: 90%;
+    margin-bottom: 2%;
+    margin: 4px auto;
+    flex-direction: column;
+    border-radius: 16px;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,.15);
+    background-color: rgb(240, 240, 240);
+}
+.updByGQuantity {
+    background-image: url('guestsquantity_btn.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 5px;
+    height: 23px;
+    width: 23px;
+}
+.quantityInput {
+    width: 30px; /* Установите ширину, которая вам подходит */
+    height: 18px; /* Установите высоту, которая вам подходит */
+    padding: 5px; /* Добавляет отступ вокруг текста внутри input */
+    font-size: 15px; /* Установите размер шрифта, который вам подходит */
+    border: 1px solid #ccc; /* Добавляет рамку вокруг input */
+    border-radius: 5px; /* Делает углы input слегка закругленными */
+}
+#guestsQuantityInput {
+    width: 30px; /* Установите ширину, которая вам подходит */
+    height: 18px; /* Установите высоту, которая вам подходит */
+    padding: 5px; /* Добавляет отступ вокруг текста внутри input */
+    font-size: 15px; /* Установите размер шрифта, который вам подходит */
+    border: 1px solid #ccc; /* Добавляет рамку вокруг input */
+    border-radius: 5px; /* Делает углы input слегка закругленными */
+}
+#guestsQuantityInput::-webkit-inner-spin-button,
+#guestsQuantityInput::-webkit-outer-spin-button,
+.quantityInput::-webkit-inner-spin-button,
+.quantityInput::-webkit-outer-spin-button {
+    -webkit-appearance: none; /* Убирает стрелки для увеличения и уменьшения значения в Chrome и Safari */
+    margin: 0; /* Обеспечивает правильное отображение в Safari */
+}
+.order-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 30px;
+    overflow-y: auto;
+}
+.pos_block1 {
+    display: flex;
+    padding: 5px;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: "Comfortaa", sans-serif;
+}
+.set_quantity {
+    background-image: url('guestsquantity_btn.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 5px;
+    height: 25px;
+    width: 25px;
+}
+hr {
+    background-image: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.2), transparent);
+    border: 0;
+    height: 1px;
+    margin: 10px 0 10px 0;
+    box-sizing: content-box;
+    display: block;
+}
+.title_and_desc {
+    display: flex;
+    flex-direction: column;
+}
+.pos_desc {
+    margin: 15px 0 0;
+    font-size: 17px;
+    letter-spacing: .4px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-wrap: normal;
+}
+.manage_quantity,.price_block {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.price_block {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 30px
+}
+.btn-remove-from-order {
+    background-color: #fff;
+    color: rgba(0,0,0,0.5);;
+    border: 1px solid rgba(0,0,0,0.5);;
+    border-radius: 8px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    font-size: 22px;
+    outline: none;
+    line-height: 1.15;
+}
+.btn-add-to-order {
+    background-color: #fff;
+    color: rgba(0,0,0,0.5);;
+    border: 1px solid rgba(0,0,0,0.5);;
+    border-radius: 8px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    font-size: 22px;
+    outline: none;
+    line-height: 1.15;
+}
+.position-quantity {
+    margin: 0 12px;
+    padding: 0;
+    font-size: 16px;
+
+}
+.pos_title {
+    margin: 0;
+    font-size: 16px;
+    letter-spacing: .7px;
+}
+.cat_block {
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    justify-content: center;
+    height: auto;
+   /* background-image: url('salat.jpg');
+    background-size: cover;
+    background-position: center;*/
+}
+.container {
+    padding: 0 30px;
+    display: flex;
+    flex: 1 1;
+    box-sizing: border-box;
+    margin-top: 10px;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: rgba(0,0,0,0.08);
+    flex-direction: column;
+    position: relative;
+}
+.anchor {
+    
+    visibility: hidden;
+}
+.cat_title{
+    display: flex;
+    position: sticky;
+    top: 0;
+
+    font-size: 32px;
+    font-weight: 400;
+    background-color: #f7f7f7;
+    z-index: 100;
+    width: 100%;
+}
+.price {
+    padding-right: 10px;
+    margin: 0;
+    font-size: 16px;
+}
+.main {
+    justify-content: center;
+    display: flex;
+    /*height: 75vh;*/
+    bottom: 0;
+    /*position: relative;*/
+    /*top: 90px;*/
+}
+.main-order {
+
+    display: flex;
+    height: 75vh;
+    bottom: 0;
+}
+.session {
+    background-color: #a7e8e8;
+    text-align: center;
+}
+.test {
+    background-image: url('salat.jpg');
+    background-size: cover;
+    background-position: center;
+}
+.header{
+    width: 100%;
+    height: 70px;
+    background-color: rgba(0,0,0,0.08);
+    position: fixed;
+    top: 0;
+    z-index: 100;
+}
+.header .head-container{
+    height: inherit;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+}
+.cat_container{
+    position: fixed;
+    padding: 10px 30px;
+    flex-wrap: nowrap;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    overflow: auto;
+    align-items: flex-start;
+    width: 70%;
+}
+.cat{
+    align-self: flex-start;
+    padding: 2px 14px;
+    margin: 4px 8px 8px 2px;
+    border-radius: 16px;
+    box-shadow: 0 0 2px 1px #d4d4d4;
+    flex-wrap: nowrap;
+    display: flex;
+    white-space: nowrap;
+    text-decoration: none;
+    color: #000;
+}
+.maincat{
+    justify-content: center;
+    display: flex;
+    position: sticky;
+    top: 70px;
+    z-index: 100;
+}
+.header_order_total {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.header_order_total_link {
+    text-decoration: none;
+}
+.total_cost {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    font-size: 16px;
+    color: #fff;
+    background-color: #000;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+.menu_page_link {
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    font-size: 16px;
+    color: #fff;
+    background-color: #000;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+.userInfoBlock {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: auto;
+}
+.mainbody {
+
+    margin-top: 70px;
+}
+.orderbody {
+    margin-top: 70px;
+}

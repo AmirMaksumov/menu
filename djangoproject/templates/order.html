@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Меню</title>
+    <link type = "text/css" rel="stylesheet" href="{% static 'menu/css/styles.css' %}">
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'js/scripts.js' %}"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="head-container">
+            <div class="header_brand">
+              <a class="menu_page_link" href="{% url 'menu_page' %}">Хлеб всему голова</a>
+            </div>
+            <div class="header_order_total">
+                <a class="header_order_total_link" href="{% url 'order:order_page' %}">
+                <span class="total_cost" id="total-cost">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+    <div class="orderbody">
+        <div>
+            <div id="asd"> gq </div>
+            <div > {{ user_info }}</div>
+            <form action="{% url 'order:delete' %}" method="post">{% csrf_token %}
+                    <input type="hidden" name="url_from" value="{{request.path}}">
+                    <button type="submit">Удалить весь заказ</button>
+            </form>
+            <div class="userInfoBlock">
+                <div class="GuestsQuantity">
+                    <h4>Введите количество гостей</h4>
+                    <input id="guestsQuantityInput" type="number" min="0" inputmode="numeric" value="{{user_info.guests_quantity}}">
+                    <button class="guestsQuantityBtn" type="submit">OK</button>
+                    <button class="updByGQuantity" type="submit"></button>
+                </div>
+                <div>
+                    <h4>Введите ваше имя</h4>
+                    <input id="userNameInp" type="text"  value="{{user_info.user_name}}">
+                    <button class="userNameBtn">OK</button>
+                </div>
+                <div>
+                    <h4>Введите дату мероприятия</h4>
+                    <input id="dateOfEvent" type="date" value="{{user_info.date_of_event}}" >
+                    <button class="dateOfEventBtn">OK</button>
+                </div>
+            </div>
+            <div>
+                <span id="emptyOrder">Ваш заказ пуст. Вернитесь к меню для добавления позиций в заказ.</span>
+
+                <br>
+                <div id="order-info"></div>
+            </div>
+             <button class="GetXlsx" type="submit">XLSX</button>
+        </div>
+        <div class="main-order">
+            <div class="order-container">
+                {% for i in order_list %}
+                <div class="pos_block_order" id="div-{{i.id}}">
+                    <div class="pos_block1">
+                        <div class="title_and_desc">
+                             <p class="pos_title">{{i.title}}</p>
+                        </div>
+                        <div class="price_block">
+                             <p class="price">{{i.price}} ₽</p>
+                            <div class="manage_quantity">
+                                <form class="remove-from-order" id="remove-from-order-{{ i.id }}" data-position-id="{{ i.id }}">
+                                    <button class="btn-remove-from-order" type="submit">-</button>
+                                </form>
+                                 <div class="position-quantity"  id="position-quantity-{{ i.id }}">
+                                     <input class="quantityInput" type="number" inputmode="numeric" id="quantityInp-{{i.id}}">
+                                 </div>
+                                 <form class="add-to-order" data-position-id="{{ i.id }}">
+                                    <button class="btn-add-to-order" type="submit">+</button>
+                                </form>
+                                <div>
+                                    <button class="update_quantity" data-position-id="{{i.id}}" id="confirmButton-{{i.id}}"
+                                            style="display: none; position:relative;">Подтвердить</button>
+                                    <button class="set_quantity" data-position-id="{{i.id}}" id="set_quantity_btn-{{i.id}}"
+                                            style="display: none; position:relative;"></button>
+                                </div>
+                            </div>
+                            <div class="pos_total" data-position-id="{{i.id}}" data-position-price="{{i.price}}">
+                                <span id="pos-total-{{i.id}}">0</span> ₽
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
